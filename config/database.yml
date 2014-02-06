@@ -1,0 +1,10 @@
+local: &base
+  adapter: mysql2
+  database: tank
+  host: localhost
+  username: root
+  password: tulasi
+  encoding: 'utf8'
+
+development:
+  <<: *base

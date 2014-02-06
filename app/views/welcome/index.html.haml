@@ -1,0 +1,34 @@
+- if user_signed_in?
+  Signed in as #{current_user.email}. Not you?
+
+
+  \#{link_to "Sign out", destroy_user_session_path}
+  .container
+    .row
+      .span9
+        Obama #tag
+        - @tags.each do |res|
+          %p
+            = image_tag res.attrs[:user][:profile_image_url]
+            = link_to res.attrs[:user][:screen_name],"https://twitter.com/#{res.attrs[:user][:screen_name]}"
+          / %p= res.attrs[:user]
+          %p= res.attrs[:text]
+
+          / %p= res.attrs[:entities]
+- else
+  %h2 Sign in
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    %div
+      = f.label :email
+      %br/
+      = f.email_field :email, :autofocus => true
+    %div
+      = f.label :password
+      %br/
+      = f.password_field :password
+    - if devise_mapping.rememberable?
+      %div
+        = f.check_box :remember_me
+        = f.label :remember_me
+    %div= f.submit "Sign in"
+  = render "devise/shared/links"

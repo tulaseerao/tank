@@ -3,7 +3,7 @@ local: &base
   database: tank
   host: localhost
   username: root
-  password: tulasi
+  password: 
   encoding: 'utf8'
 
 development:
